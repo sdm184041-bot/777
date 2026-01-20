@@ -623,3 +623,39 @@ headshots.Fly.Keybind = Enum.KeyCode.F
 headshots.TargetAim.TracerKeybind = Enum.KeyCode.T
 headshots.TargetAim.HighlightKeybind = Enum.KeyCode.H
 headshots.TargetAim.StrafeKeybind = Enum.KeyCode.Z
+local uis = game:GetService("UserInputService")
+
+uis.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then return end -- ignore if game UI captured the key
+
+    -- Toggle Target Aim
+    if input.KeyCode == headshots.TargetAim.Keybind then
+        headshots.TargetAim.Enabled = not headshots.TargetAim.Enabled
+        print("Target Aim:", headshots.TargetAim.Enabled)
+    end
+
+    -- Toggle Fly
+    if input.KeyCode == headshots.Fly.Keybind then
+        headshots.Fly.Enabled = not headshots.Fly.Enabled
+        print("Fly:", headshots.Fly.Enabled)
+    end
+
+    -- Toggle Tracer
+    if input.KeyCode == headshots.TargetAim.TracerKeybind then
+        headshots.TargetAim.Tracer = not headshots.TargetAim.Tracer
+        print("Tracer:", headshots.TargetAim.Tracer)
+    end
+
+    -- Toggle Highlight
+    if input.KeyCode == headshots.TargetAim.HighlightKeybind then
+        headshots.TargetAim.Highlight = not headshots.TargetAim.Highlight
+        print("Highlight:", headshots.TargetAim.Highlight)
+    end
+
+    -- Toggle Strafe
+    if input.KeyCode == headshots.TargetAim.StrafeKeybind then
+        headshots.TargetAim.Strafe = not headshots.TargetAim.Strafe
+        print("Strafe:", headshots.TargetAim.Strafe)
+    end
+end)
+
